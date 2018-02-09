@@ -1,0 +1,21 @@
+{
+    "name": "fastreading/excel",
+    "description": "fast reading of the excel files (xls,csv, xlsx)",
+    "type": "library",
+    "authors": [
+        {
+            "name": "kaleb borda",
+            "email": "kaleb.borda@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {},
+     "autoload": {
+    "classmap": [
+      "src/"
+    ],
+    "psr-0": {
+     "fastreading\\excel\\": "src/"
+    }
+  }
+}
