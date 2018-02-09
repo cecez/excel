@@ -1,4 +1,6 @@
-## fastreading for Laravel 5
+
+
+## fastreading for Laravel 5 ( lib in development )
 
 Reads the file types (Xls, xlsx, csv).
 
