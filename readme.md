@@ -23,3 +23,5 @@ composer require "fastreading/excel"
 method   |             attributes     |return
 ---------|----------------------------|--------
 getFile()| $withHeader (default false)| array 
+getHeader()||array
+getColls()||array
