@@ -21,5 +21,5 @@ composer require "fastreading/excel"
 #Functions
 
 method   |             attributes     |return
------------------------------------------------
+---------|----------------------------|--------
 getFile()| $withHeader (default false)| array 
