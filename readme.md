@@ -5,7 +5,7 @@ Reads the file types (Xls, xlsx, csv).
 ---
 
 ```php
-Excel::load("path your file")->getFile();
+Excel::load("path your file")->getFile();// return a File type with array of your file change
 ```
 
 ---
