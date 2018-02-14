@@ -482,7 +482,7 @@ class SimpleXLSX {
 
 
 		if ( $xlsx->success() ) {
-			return $xlsx;
+			return $xlsx->rows();
 		}
 		self::parse_error( $xlsx->error() );
 
