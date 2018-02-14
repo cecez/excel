@@ -1,11 +1,13 @@
-## fastreading for Laravel 5
+
+
+## fastreading for Laravel 5 ( lib in development )
 
 Reads the file types (Xls, xlsx, csv).
 
 ---
 
 ```php
-Excel::load("path your file")->getFile();
+Excel::load("path your file")->getFile();// return a File type with array of your file change
 ```
 
 ---
@@ -21,5 +23,7 @@ composer require "fastreading/excel"
 #Functions
 
 method   |             attributes     |return
------------------------------------------------
+---------|----------------------------|--------
 getFile()| $withHeader (default false)| array 
+getHeader()||array
+getColls()||array
