@@ -10,7 +10,9 @@
     ],
     "require": {
         "php": ">=5.3.0"
-    },
+    },"suggest": {
+    "ext-xml":"Required to use php xml extension 'php-xml' "
+},
     "minimum-stability": "dev",
     "require": {},
      "autoload": {
