@@ -31,7 +31,9 @@ abstract class File
      */
     protected $_nomeArquivo;
 
-
+    public function getFileWay(){
+        return ($this->_nomeArquivo);
+    }
     public function getColls(){
         if(empty($this->_colunas))
             foreach ($this->file as $colunas) {

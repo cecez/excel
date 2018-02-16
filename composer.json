@@ -8,6 +8,7 @@
             "email": "kaleb.borda@gmail.com"
         }
     ],
+"license": "MIT",
     "require": {
         "php": ">=5.3.0"
     },"suggest": {
