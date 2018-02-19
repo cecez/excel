@@ -776,7 +776,7 @@ class BiffWorkbook
 				$this->biffVersion = $bof ['version'] == 0x0500 ? 5 : 8;
 				$this->palette = self::$_defaultPalette
 					+ ($this->biffVersion == 5 ? self::$_biff5Palette : self::$_biff8Palette);
-				$this->formats = \BiffWorkbookStyle::$dateFormats + \BiffWorkbookStyle::$numberFormats;
+				//$this->formats = \BiffWorkbookStyle::$dateFormats + \BiffWorkbookStyle::$numberFormats;
 				$this->_datemode = 0;
 
 				break;

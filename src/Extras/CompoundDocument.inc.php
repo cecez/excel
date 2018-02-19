@@ -189,7 +189,7 @@ class CompoundDocument
 					$this->header ['sstreamSecId'] = $desc ['secId'];
 					$this->_shortData = $this->_getNormalStream ($desc ['secId']);
 				}
-				$desc ['name'] = iconv ('utf-16le', $this->charset, substr ($desc ['name'], 0, $desc ['nameLength'] - 2));
+				$desc ['name'] = iconv (mb_detect_encoding($desc ['name'], mb_detect_order(), false), $this->charset, substr ($desc ['name'], 0, $desc ['nameLength'] - 2));
 				$this->directory [$id]['desc'] = $desc;
 				if ($desc ['type'] == 2) $this->directory [$id]['data'] = $this->_getStream ($id);
 			}
