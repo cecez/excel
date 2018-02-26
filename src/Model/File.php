@@ -31,9 +31,7 @@ abstract class File
      */
     protected $_nomeArquivo;
 
-    public function getFileWay(){
-        return ($this->_nomeArquivo);
-    }
+
     public function getColls(){
         if(empty($this->_colunas))
             foreach ($this->file as $colunas) {
@@ -77,8 +75,10 @@ abstract class File
         }
     }
 
-    public function __construct($pathFile)
+    public function __construct($pathFile=null)
     {
+        if($pathFile==null)return;
+
         $this->_nomeArquivo = $pathFile;//Nome do arquivo.
         if(empty($this->_nomeArquivo) || empty(file_get_contents ($this->_nomeArquivo))) throw new \Exception("Arquivo nao foi setado");
 

@@ -15,15 +15,29 @@ class FileXls extends File
     protected function readFile(){
         if(!empty($this->file)) return $this->file;
 
+        if(empty($this->_nomeArquivo))return null;
         $doc = new CompoundDocument ('utf-8');
-        $doc->parse (file_get_contents ($this->_nomeArquivo));
-        $wb = new BiffWorkbook($doc);
-        $wb->parse ();
+        try{
+            $doc->parse (file_get_contents ($this->_nomeArquivo));
 
-        foreach ($wb->sheets as $sheetName => $sheet)
-        {
-          $this->file = $sheet->cells;
-            return;
+            $wb = new BiffWorkbook($doc);
+            $wb->parse();
+
+            foreach ($wb->sheets as $sheetName => $sheet)
+            {
+                $this->file = $sheet->cells;
+                return;
+            }
+        }catch (\Exception $e){
+            throw new \Exception($e->getMessage());
+
         }
+
+    }
+    public function setFilePath($filePath){
+        $this->_nomeArquivo = $filePath;
+    }
+    public function setFile(array $arquivo){
+        $this->file = $arquivo;
     }
 }

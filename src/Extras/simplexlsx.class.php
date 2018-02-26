@@ -519,9 +519,8 @@ class SimpleXLSX {
 		list( $cols, ) = $this->dimension( $worksheet_id );
             $firstLoop = true;
 		/* @var SimpleXMLElement $ws */
+
 		foreach ( $ws->sheetData->row as $row ) {
-
-
 
                 if($firstLoop and !$withHeader){
                     $firstLoop =false;
@@ -621,10 +620,15 @@ class SimpleXLSX {
 
 	public function value( $cell, $format = null ) {
 		// Determine data type
+
+		return $this->sharedstrings[ (int) $cell->v ];
 		$dataType = (string) $cell['t'];
 
 		if ( $format === null ) {
+
 			$s = (int) $cell['s'];
+
+
 			if ( $s > 0 && isset( $this->workbook_cell_formats[ $s ] ) ) {
 				$format = $this->workbook_cell_formats[ $s ]['format'];
 			}
@@ -632,12 +636,17 @@ class SimpleXLSX {
 		if ( strpos( $format, 'm' ) !== false ) {
 			$dataType = 'd';
 		}
+
 		$value = '';
+		
+
+
 		switch ( $dataType ) {
 			case 's':
 				// Value is a shared string
 				if ( (string) $cell->v !== '' ) {
 					$value = $this->sharedstrings[ (int) $cell->v ];
+					
 				}
 
 				break;

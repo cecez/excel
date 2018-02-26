@@ -9,6 +9,7 @@
 namespace fastreading\excel;
 
 
+use fastreading\excel\Extras\SpreadsheetReader;
 use fastreading\excel\Model\FileXls;
 use fastreading\excel\Model\FileXlsx;
 use fastreading\excel\Model\FileCsv;
@@ -19,13 +20,27 @@ class Excel
         $extensaoArquivo = explode('.', strtolower($pathFile));
         $extensaoArquivo = end($extensaoArquivo);
         $arquivo= null;
+
         try{
             switch ($extensaoArquivo){
                 case  in_array($extensaoArquivo, ['xlsx']):
                     $arquivo  =new  FileXlsx($pathFile);
+
                     break;
                 case in_array($extensaoArquivo, ['xls']):
-                    $arquivo  =new  FileXls($pathFile);
+                    $arquivo  =new  FileXls();
+                    $reader = new SpreadsheetReader($pathFile);
+                    $arr=[];
+                    foreach($reader as $r){
+                        $row = [];
+                        foreach($r as $a){
+                            $row[]=preg_replace('/[\x00-\x1F\x7F]/', '', utf8_encode($a));
+                        }
+                        $arr[]=$row;
+                    }
+                    $arquivo->setFile($arr);
+                    $arquivo->setFilePath($pathFile);
+
                     break;
                 case in_array($extensaoArquivo, ['csv']):
                     $arquivo= new FileCsv($pathFile);
@@ -35,6 +50,7 @@ class Excel
                     break;
             }
         }catch (\Exception $e){
+
             throw new \Exception($e->getMessage(),$e->getCode());
         }
 

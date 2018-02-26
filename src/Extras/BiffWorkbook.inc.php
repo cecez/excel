@@ -180,9 +180,10 @@ class BiffWorkbook
 		return array ($value, $raw);
 	}
 
-	private function _decodeRk ($row, $col, BiffWorkbookStyle $style, $raw)
+	private function _decodeRk ($row, $col, $raw)
 	{
         $this->_sheet->addCell[]=$row;
+
 //	    $number = self::ieee754 ($raw);
 //		if ($style->formatType == BiffWorkbookStyle::ftDate)
 //			list ($value, $raw) = $this->_getDate ($style, $number);
@@ -671,7 +672,7 @@ class BiffWorkbook
 	private function _onRk ($record)
 	{
 		$raw = unpack ('vrow/vcol/vxf/Vvalue', $this->_data (10));
-		$this->_decodeRk ($raw ['row'], $raw ['col'], $this->styles [$raw ['xf']], $raw ['value']);
+		$this->_decodeRk ($raw ['row'], $raw ['col'], $raw ['value']);
 	}
 
 	/**
@@ -686,7 +687,7 @@ class BiffWorkbook
 		for ($col = $raw ['first_col'], $offset = 4; $col <= $lastCol; $col ++, $offset += 6)
 		{
 			$rk = unpack ('vxf/Vvalue', $this->_data (6, $offset));
-			$this->_decodeRk ($raw ['row'], $col, $this->styles [$rk ['xf']], $rk ['value']);
+			$this->_decodeRk ($raw ['row'], $col, $rk ['value']);
 		}
 	}
 
@@ -776,7 +777,7 @@ class BiffWorkbook
 				$this->biffVersion = $bof ['version'] == 0x0500 ? 5 : 8;
 				$this->palette = self::$_defaultPalette
 					+ ($this->biffVersion == 5 ? self::$_biff5Palette : self::$_biff8Palette);
-				//$this->formats = \BiffWorkbookStyle::$dateFormats + \BiffWorkbookStyle::$numberFormats;
+				$this->formats = BiffWorkbookStyle::$dateFormats + BiffWorkbookStyle::$numberFormats;
 				$this->_datemode = 0;
 
 				break;
