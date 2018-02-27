@@ -21,7 +21,6 @@ class FileCsv extends File
 		    while (($data = fgetcsv($handle, ",")) !== FALSE) {
 		        
 		      	$data=  str_replace($this->_separadores, ',', $data);
-		        $data = explode(',', $data[0]);
 		        $this->file[$row]= $data;
 		        $row++;
 		    }
