@@ -16,7 +16,6 @@
 },
     "minimum-stability": "dev",
     "require": {
-	"neitanod/forceutf8": "~2.0"
 },
      "autoload": {
     "classmap": [

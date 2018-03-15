@@ -8,7 +8,7 @@
 
 namespace fastreading\excel\Model;
 
-use \ForceUTF8\Encoding;
+use Excel\Extras\Encoding;
 class FileCsv extends File
 {
         private $encoding = "";
@@ -18,8 +18,14 @@ class FileCsv extends File
     {
 	$row = 0;
         $this->file2 = file_get_contents($this ->_nomeArquivo);
-        if(mb_detect_encoding( $this->file2) != "UTF-8"){
+       $this->encoding= mb_detect_encoding( $this->file2,
+           ['pass', 'auto', 'UTF-16','UTF-16BE','UTF-16LE','UTF-8','ISO-8859-1']
+       );
+//       dd($this->encoding);
+        if($this->encoding != "UTF-8"){
             $this->file2 = Encoding::toUTF8($this->file2);
+
+
         }
 
         $data = explode("\n",$this->file2);
@@ -33,3 +39,4 @@ class FileCsv extends File
         }
     }
 }
+
