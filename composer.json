@@ -15,7 +15,9 @@
     "ext-xml":"Required to use php xml extension 'php-xml' "
 },
     "minimum-stability": "dev",
-    "require": {},
+    "require": {
+	"neitanod/forceutf8": "~2.0"
+},
      "autoload": {
     "classmap": [
       "src/"

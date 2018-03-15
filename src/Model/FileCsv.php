@@ -8,28 +8,28 @@
 
 namespace fastreading\excel\Model;
 
-
+use \ForceUTF8\Encoding;
 class FileCsv extends File
 {
+        private $encoding = "";
 	private $_separadores = [',',';',"  "];
+	private $file2;
     protected function readFile()
     {
-         $row = 0;
-//        dd($this->getFileDelimiter($this ->_nomeArquivo));
-		if (($handle = fopen($this ->_nomeArquivo, "r")) !== FALSE) {
-//        dd($handle );
-		    while (($data = fgetcsv($handle,',')) !== FALSE) {
+	$row = 0;
+        $this->file2 = file_get_contents($this ->_nomeArquivo);
+        if(mb_detect_encoding( $this->file2) != "UTF-8"){
+            $this->file2 = Encoding::toUTF8($this->file2);
+        }
 
-		      	$data=  str_replace($this->_separadores, ',', $data);
+        $data = explode("\n",$this->file2);
+        foreach($data as $linha){
+            if(empty($linha)) continue;
 
-		      	if(isset($data[0]) and !is_array($data[0]) and count($data) <= 1   ){
-
-		      	    $data = explode(',',$data[0]);
-                }
-		        $this->file[$row]= str_replace('"','',$data);
-		        $row++;
-		    }
-		    fclose($handle);
-		}
+            $linha=  str_replace($this->_separadores, ',', $linha);
+            $linha = explode(',',$linha);
+            $this->file[$row]= str_replace('"','',$linha);
+            $row++;
+        }
     }
 }
