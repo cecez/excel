@@ -189,7 +189,7 @@ class Encoding {
       return $text;
     }
        if(mb_detect_encoding(
-           $text, ['pass', 'auto', 'UTF-16','UTF-16BE','UTF-16LE','ISO-8859-1']))
+           $text, ['UTF-16','UTF-16BE','UTF-16LE','ISO-8859-1']))
        {
         return self::utf16_to_utf8($text);
        }
