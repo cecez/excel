@@ -46,7 +46,7 @@ class Excel
                     $arquivo= new FileCsv($pathFile);
                     break;
                 default:
-                    throw new \Exception('arquivo nao suportado ',500);
+                    throw new \Exception('arquivo nao suportado ',503);
                     break;
             }
         }catch (\Exception $e){
