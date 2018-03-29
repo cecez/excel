@@ -37,7 +37,7 @@ POSSIBILITY OF SUCH DAMAGE.
  * @license  Revised BSD
   */
 
-namespace fastreading\excel\Extras;
+namespace Excel\Extras;
 
 class Encoding {
 
@@ -188,10 +188,9 @@ class Encoding {
     if(!is_string($text)) {
       return $text;
     }
-       if($encoding = mb_detect_encoding(
-           $text, ['UTF-16','UTF-16BE','UTF-16LE']))
+       if(mb_detect_encoding(
+           $text, ['UTF-16','UTF-16BE','UTF-16LE','ISO-8859-1']))
        {
-           dd($encoding);
         return self::utf16_to_utf8($text);
        }
     $max = self::strlen($text);
