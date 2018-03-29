@@ -37,7 +37,7 @@ POSSIBILITY OF SUCH DAMAGE.
  * @license  Revised BSD
   */
 
-namespace Excel\Extras;
+namespace fastreading\excel\Extras;
 
 class Encoding {
 
