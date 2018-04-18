@@ -621,8 +621,10 @@ class SimpleXLSX {
 	public function value( $cell, $format = null ) {
 		// Determine data type
 
-		return $this->sharedstrings[ (int) $cell->v ];
-		$dataType = (string) $cell['t'];
+//		return $this->sharedstrings[ (int) $cell->v ];
+        $dataType = (string) $cell['t'];
+
+        if(empty($dataType))return '';
 
 		if ( $format === null ) {
 
