@@ -622,7 +622,7 @@ class SimpleXLSX {
 		// Determine data type
 
 //		return $this->sharedstrings[ (int) $cell->v ];
-        $dataType = (string) $cell['t'];
+        $dataType = 's';//(string) $cell['t'];
 
         if(empty($dataType))return '';
 
@@ -696,7 +696,10 @@ class SimpleXLSX {
 					} elseif ( $value == (float) $value ) {
 						$value = (float) $value;
 					}
-				}
+				}else {
+                    $value = $this->sharedstrings[ (int) $cell->v ];
+
+                }
 		}
 
 		return $value;

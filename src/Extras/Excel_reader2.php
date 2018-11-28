@@ -926,7 +926,7 @@ class Spreadsheet_Excel_Reader {
      * Some basic initialisation
      */
     function __construct($file='',$store_extended_info=true,$outputEncoding='') {
-//        dd('asd');
+
         $this->_ole = new OLERead();
         $this->setUTFEncoder('iconv');
         if ($outputEncoding != '') {
@@ -989,9 +989,9 @@ class Spreadsheet_Excel_Reader {
      * Read the spreadsheet file using OLE, then parse
      */
     function read($sFileName) {
-//            dd('chegou');
+
         $res = $this->_ole->read($sFileName);
-//        dd($res);
+
         // oops, something goes wrong (Darko Miljanovic)
         if($res === false) {
             // check error code
@@ -1730,7 +1730,7 @@ class Spreadsheet_Excel_Reader {
 
     function _encodeUTF16($string) {
         $result = $string;
-//        dd($this->_encoderFunction);
+
         if ($this->_defaultEncoding){
             switch ($this->_encoderFunction){
                 case 'iconv' :
