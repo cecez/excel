@@ -136,11 +136,11 @@ class SpreadsheetReader
         {
             self::Load(self::TYPE_XLS);
             $this -> Handle = new SpreadsheetReader_XLS($Filepath);
-//            dd($this -> Handle );
+
             if ($this -> Handle -> Error)
             {
                 $this -> Handle -> __destruct();
-//                dd(is_resource($ZipHandle = zip_open($Filepath)));
+
                 if (is_resource($ZipHandle = \zip_open($Filepath)))
                 {
                     $this -> Type = self::TYPE_XLSX;
