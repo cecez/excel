@@ -17,7 +17,7 @@ Excel::load("path your file")->getFile();// return a File type with array of you
 Require this package in your `composer.json` .
 
 ```php
-composer require "fastreading/excel:~1.0.3"
+composer require "fastreading/excel:~1.0.*"
 ```
 
 #Functions
